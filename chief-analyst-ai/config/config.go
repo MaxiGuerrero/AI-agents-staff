@@ -1,4 +1,4 @@
-package main
+package config
 
 import (
 	"github.com/spf13/viper"
@@ -8,6 +8,7 @@ type Config struct {
 	Telegram struct {
 		Token string `mapstructure:"token"`
 	} `mapstructure:"telegram"`
+	WhiteUserId int64 `mapstructure:"white_user_id"`
 }
 
 func LoadConfig() *Config {
