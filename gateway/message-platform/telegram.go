@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	config "github.com/MaxiGuerrero/AI-agents-staff/chief-analyst-ai/config"
+	config "github.com/MaxiGuerrero/AI-agents-staff/gateway/config"
 	"gopkg.in/telebot.v4"
 )
 

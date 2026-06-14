@@ -1,4 +1,4 @@
-module github.com/MaxiGuerrero/AI-agents-staff/chief-analyst-ai
+module github.com/MaxiGuerrero/AI-agents-staff/gateway
 
 go 1.25.0
 

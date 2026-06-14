@@ -1,7 +1,8 @@
 package handlers
 
 import (
-	platform "github.com/MaxiGuerrero/AI-agents-staff/chief-analyst-ai/message-platform"
+	errors "github.com/MaxiGuerrero/AI-agents-staff/gateway/errors"
+	platform "github.com/MaxiGuerrero/AI-agents-staff/gateway/message-platform"
 )
 
 func NewRealTimeChatHandler() platform.Handler {
@@ -13,5 +14,5 @@ func realTimeChat(ctx platform.CommandContext) error {
 		ctx.Send("You said: " + ctx.Text)
 		return nil
 	}
-	return unauthorizedAccess(ctx)
+	return errors.UnauthorizedAccess(ctx)
 }

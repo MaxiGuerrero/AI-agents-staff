@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	platform "github.com/MaxiGuerrero/AI-agents-staff/chief-analyst-ai/message-platform"
+	platform "github.com/MaxiGuerrero/AI-agents-staff/gateway/message-platform"
 )
 
 // Registers here all GetHandlers function that will return the handlers to be used in the main application,.

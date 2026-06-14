@@ -5,9 +5,9 @@ import (
 	"os"
 	"os/signal"
 
-	config "github.com/MaxiGuerrero/AI-agents-staff/chief-analyst-ai/config"
-	handlers "github.com/MaxiGuerrero/AI-agents-staff/chief-analyst-ai/handlers"
-	messageplatform "github.com/MaxiGuerrero/AI-agents-staff/chief-analyst-ai/message-platform"
+	config "github.com/MaxiGuerrero/AI-agents-staff/gateway/config"
+	handlers "github.com/MaxiGuerrero/AI-agents-staff/gateway/handlers"
+	messageplatform "github.com/MaxiGuerrero/AI-agents-staff/gateway/message-platform"
 )
 
 func main() {
