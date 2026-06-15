@@ -24,7 +24,7 @@ func (h *Handler) HandleChat(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Invalid request body", http.StatusBadRequest)
 		return
 	}
-	message, err := h.chatService.ProcessMessage(req.Message, req.Channel, req.RequestId)
+	message, err := h.chatService.ProcessMessage(r.Context(), req.Message, req.Channel, req.RequestId)
 	if err != nil {
 		http.Error(w, "Failed to process message", http.StatusInternalServerError)
 		return

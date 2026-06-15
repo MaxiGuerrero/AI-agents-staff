@@ -1,0 +1,46 @@
+services:
+  values-inyector:
+    image: alpine:latest
+    command: /bin/sh -c "apk add --no-cache gettext && envsubst < /tmp/config.template.yaml > /shared/config.yaml"
+    environment:
+      - TOKEN_TELEGRAM=${TOKEN_TELEGRAM}
+      - WHITE_USER_ID=${WHITE_USER_ID}
+      - WHITE_USER_NAME=${WHITE_USER_NAME}
+    volumes:
+      - ./config.yaml:/tmp/config.template.yaml:ro
+      - ./shared:/shared
+    networks:
+      - ia-network
+  gateway:
+    build:
+      context: ../gateway
+    depends_on:
+      values-inyector:
+        condition: service_completed_successfully
+    environment:
+      CONFIG_PATH: /shared/config.yaml
+    ports:
+      - "8080:8080"
+    networks:
+      - ia-network
+    volumes:
+      - ./shared:/shared
+  chief-analyst:
+    build:
+      context: ../chief-analyst
+    depends_on:
+      values-inyector:
+        condition: service_completed_successfully
+    environment:
+      CONFIG_PATH: /shared/config.yaml
+    ports:
+      - "8081:8080"
+    networks:
+      - ia-network
+    volumes:
+      - ./shared:/shared
+
+networks:
+  ia-network:
+    driver: bridge
+    name: ia-network

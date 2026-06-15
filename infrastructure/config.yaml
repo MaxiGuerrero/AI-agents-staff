@@ -1,0 +1,7 @@
+telegram:
+  token: ${TOKEN_TELEGRAM}
+white_user_id: ${WHITE_USER_ID}
+white_user_name: ${WHITE_USER_NAME}
+base_url: "http://chief-analyst:8080"
+channel: "telegram"
+llm_base_url: "http://localhost:9000"

@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	// Load configuration and print the Telegram token to verify that it is being read correctly
+	// Load configuration
 	var conf = config.LoadConfig()
 	handlers := handlers.GetHandlers()
 	bot := messageplatform.NewTelegramBot(conf.Telegram.Token, utils.GenerateUUID())

@@ -23,7 +23,7 @@ func NewTelegramBot(token string, securityToken string) *TelegramBot {
 		},
 	})
 	if err != nil {
-		panic("Bot cannot be configured")
+		panic(fmt.Sprintf("cannot configure bot: %v", err))
 	}
 	return &TelegramBot{
 		telebot:       tb,

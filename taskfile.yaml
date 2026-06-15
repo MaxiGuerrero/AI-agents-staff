@@ -1,0 +1,9 @@
+version: "3"
+
+tasks:
+  start:
+    cmds:
+      - docker compose -f ./infrastructure/docker-compose.yaml down
+      - docker compose -f ./infrastructure/docker-compose.yaml up -d --build
+      ## Wait for log in gateway to show the "password" that must be used in /start telegram
+      - docker compose -f ./infrastructure/docker-compose.yaml logs -f gateway
