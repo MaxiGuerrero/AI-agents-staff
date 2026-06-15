@@ -1,4 +1,4 @@
-package handlers
+package security
 
 import (
 	errors "github.com/MaxiGuerrero/AI-agents-staff/gateway/errors"

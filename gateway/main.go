@@ -8,13 +8,14 @@ import (
 	config "github.com/MaxiGuerrero/AI-agents-staff/gateway/config"
 	handlers "github.com/MaxiGuerrero/AI-agents-staff/gateway/handlers"
 	messageplatform "github.com/MaxiGuerrero/AI-agents-staff/gateway/message-platform"
+	"github.com/MaxiGuerrero/AI-agents-staff/gateway/utils"
 )
 
 func main() {
 	// Load configuration and print the Telegram token to verify that it is being read correctly
 	var conf = config.LoadConfig()
 	handlers := handlers.GetHandlers()
-	bot := messageplatform.NewTelegramBot(conf.Telegram.Token, generateSecurityToken())
+	bot := messageplatform.NewTelegramBot(conf.Telegram.Token, utils.GenerateUUID())
 	bot.InitHandlers(handlers)
 	bot.Start()
 	// Initzialize shutdown handler to gracefully exit the application when an interrupt signal is received

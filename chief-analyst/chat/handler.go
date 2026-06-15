@@ -1,0 +1,44 @@
+package chat
+
+import (
+	"encoding/json"
+	"net/http"
+	"time"
+)
+
+type Handler struct {
+	chatService *ChatService
+}
+
+func NewHandler(chatService *ChatService) *Handler {
+	return &Handler{
+		chatService: chatService,
+	}
+}
+
+func (h *Handler) HandleChat(w http.ResponseWriter, r *http.Request) {
+	var req ChatRequest
+	var res ChatResponse
+	err := json.NewDecoder(r.Body).Decode(&req)
+	if err != nil {
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		return
+	}
+	message, err := h.chatService.ProcessMessage(req.Message, req.Channel, req.RequestId)
+	if err != nil {
+		http.Error(w, "Failed to process message", http.StatusInternalServerError)
+		return
+	}
+	res = ChatResponse{
+		RequestId: req.RequestId,
+		Message:   message,
+		Timestamp: time.Now(),
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	err = json.NewEncoder(w).Encode(&res)
+	if err != nil {
+		http.Error(w, "Failed to encode response", http.StatusInternalServerError)
+		return
+	}
+}

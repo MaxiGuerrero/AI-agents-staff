@@ -8,7 +8,9 @@ type Config struct {
 	Telegram struct {
 		Token string `mapstructure:"token"`
 	} `mapstructure:"telegram"`
-	WhiteUserId int64 `mapstructure:"white_user_id"`
+	WhiteUserId int64  `mapstructure:"white_user_id"`
+	BaseUrl     string `mapstructure:"base_url"`
+	Channel     string `mapstructure:"channel"`
 }
 
 func LoadConfig() *Config {

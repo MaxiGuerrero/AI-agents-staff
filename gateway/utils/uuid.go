@@ -1,7 +1,7 @@
-package main
+package utils
 
 import "github.com/google/uuid"
 
-func generateSecurityToken() string {
+func GenerateUUID() string {
 	return uuid.New().String()
 }

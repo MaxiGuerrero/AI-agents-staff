@@ -1,6 +1,8 @@
 package handlers
 
 import (
+	"github.com/MaxiGuerrero/AI-agents-staff/gateway/handlers/realTimeChat"
+	"github.com/MaxiGuerrero/AI-agents-staff/gateway/handlers/security"
 	platform "github.com/MaxiGuerrero/AI-agents-staff/gateway/message-platform"
 )
 
@@ -8,7 +10,7 @@ import (
 // This way we can keep all the handlers organized in one place and easily add new handlers as needed without modifying the main application code.
 func GetHandlers() []platform.Handler {
 	return []platform.Handler{
-		NewStartHandler(),
-		NewRealTimeChatHandler(),
+		security.NewStartHandler(),
+		realTimeChat.NewRealTimeChatHandler(),
 	}
 }
