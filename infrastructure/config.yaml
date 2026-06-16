@@ -4,4 +4,5 @@ white_user_id: ${WHITE_USER_ID}
 white_user_name: ${WHITE_USER_NAME}
 base_url: "http://chief-analyst:8080"
 channel: "telegram"
-llm_base_url: "http://localhost:9000"
+llm_base_url: "http://llama-api:9000"
+llm_temperature: 0.1

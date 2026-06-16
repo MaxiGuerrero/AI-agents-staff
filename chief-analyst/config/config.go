@@ -7,9 +7,10 @@ import (
 )
 
 type Config struct {
-	WhiteUserId   int64  `mapstructure:"white_user_id"`
-	WhiteUserName string `mapstructure:"white_user_name"`
-	LlmBaseUrl    string `mapstructure:"llm_base_url"`
+	WhiteUserId    int64   `mapstructure:"white_user_id"`
+	WhiteUserName  string  `mapstructure:"white_user_name"`
+	LlmBaseUrl     string  `mapstructure:"llm_base_url"`
+	LlmTemperature float64 `mapstructure:"llm_temperature"`
 }
 
 func LoadConfig() *Config {

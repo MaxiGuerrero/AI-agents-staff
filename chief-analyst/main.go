@@ -14,7 +14,7 @@ func main() {
 	// Load configuration
 	var conf = config.LoadConfig()
 	// Initialize services and handlers
-	llmClient := llm.NewLLM(conf.LlmBaseUrl)
+	llmClient := llm.NewLLM(conf.LlmBaseUrl, conf.LlmTemperature)
 	chatService := chat.NewChatService(llmClient)
 	chatHandler := chat.NewHandler(chatService)
 	// Set up HTTP server and routes

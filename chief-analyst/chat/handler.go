@@ -2,6 +2,7 @@ package chat
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"time"
 )
@@ -22,11 +23,13 @@ func (h *Handler) HandleChat(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
 		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		log.Println("Failed to decode request body:", err)
 		return
 	}
-	message, err := h.chatService.ProcessMessage(r.Context(), req.Message, req.Channel, req.RequestId)
+	message, err := h.chatService.ProcessMessage(r.Context(), req.Message, req.Channel, req.RequestId, req.UserId)
 	if err != nil {
 		http.Error(w, "Failed to process message", http.StatusInternalServerError)
+		log.Println("Failed to process message:", err)
 		return
 	}
 	res = ChatResponse{

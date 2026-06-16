@@ -21,7 +21,7 @@ func NewChiefAnalystServiceClient(baseURL string) *ChiefAnalystHttpClient {
 	}
 }
 
-func (s *ChiefAnalystHttpClient) SendMessageChiefAnalyst(message string, channel string, requestId string, userId string) (ChatResponse, error) {
+func (s *ChiefAnalystHttpClient) SendMessageChiefAnalyst(message string, channel string, requestId string, userId int64) (ChatResponse, error) {
 	request := ChatRequest{
 		RequestId: requestId,
 		UserId:    userId,

@@ -4,7 +4,7 @@ import "time"
 
 type ChatRequest struct {
 	RequestId string `json:"request_id"`
-	UserId    string `json:"user_id"`
+	UserId    int64  `json:"user_id"`
 	Channel   string `json:"channel"`
 	Message   string `json:"message"`
 }

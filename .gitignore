@@ -4,3 +4,5 @@ dist/
 /config.yml
 .env
 shared
+models
+context.txt

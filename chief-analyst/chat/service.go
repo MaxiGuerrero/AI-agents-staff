@@ -17,16 +17,16 @@ func NewChatService(llmClient llm.ILlm) *ChatService {
 	}
 }
 
-func (s *ChatService) ProcessMessage(ctx context.Context, message string, channel string, requestId string) (string, error) {
-	// Placeholder for actual message processing logic
+func (s *ChatService) ProcessMessage(ctx context.Context, message string, channel string, requestId string, userId int64) (string, error) {
 	log.Println("Processing message for channel:", channel, "with request ID:", requestId)
-	prompt := []llm.Message{
-		{Role: "system", Content: "You are a helpful assistant."},
-		{Role: "user", Content: message},
+	prompt := llm.Message{
+		Role:    "user",
+		Content: message,
 	}
-	response, err := s.llmClient.Chat(ctx, prompt)
+	response, err := s.llmClient.Chat(ctx, prompt, userId)
 	if err != nil {
 		return "", err
 	}
+	log.Println("message processed by LLM for User: ", userId)
 	return response, nil
 }

@@ -7,3 +7,6 @@ tasks:
       - docker compose -f ./infrastructure/docker-compose.yaml up -d --build
       ## Wait for log in gateway to show the "password" that must be used in /start telegram
       - docker compose -f ./infrastructure/docker-compose.yaml logs -f gateway
+  llm-start:
+    cmds:
+      - docker run -d --gpus all --network ia-network --name llama-api -p 9000:9000 -v ./models:/models ghcr.io/ggml-org/llama.cpp:server-cuda13 -m /models/Qwen_Qwen3-8B-Q4_K_M.gguf -c 4096 --host 0.0.0.0 --port 9000 -ngl 999

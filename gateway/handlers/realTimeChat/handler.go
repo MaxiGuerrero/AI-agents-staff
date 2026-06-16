@@ -1,7 +1,7 @@
 package realTimeChat
 
 import (
-	"strconv"
+	"log"
 
 	"github.com/MaxiGuerrero/AI-agents-staff/gateway/config"
 	errors "github.com/MaxiGuerrero/AI-agents-staff/gateway/errors"
@@ -19,9 +19,10 @@ func NewRealTimeChatHandler() platform.Handler {
 
 func realTimeChat(service *RealTimeChatService, ctx platform.CommandContext) error {
 	if ctx.Authorized[ctx.UserID] {
-		userId := strconv.FormatInt(ctx.UserID, 10)
+		userId := ctx.UserID
 		response, err := service.ProcessMessage(ctx.Text, userId)
 		if err != nil {
+			log.Println("Failed to process message:", err)
 			return err
 		}
 		ctx.Send(response)

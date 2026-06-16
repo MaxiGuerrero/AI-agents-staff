@@ -16,7 +16,7 @@ func NewRealTimeChatService(baseUrl string, channel string) *RealTimeChatService
 	}
 }
 
-func (s *RealTimeChatService) ProcessMessage(message string, userId string) (string, error) {
+func (s *RealTimeChatService) ProcessMessage(message string, userId int64) (string, error) {
 	requestId := s.generateUUID()
 	response, err := s.httpClient.SendMessageChiefAnalyst(message, s.channel, requestId, userId)
 	if err != nil {
